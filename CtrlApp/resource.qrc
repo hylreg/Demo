@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>material/00001.webp</file>
+        <file>material/24gf-circle.png</file>
+        <file>material/bj.png</file>
+        <file>material/bj1.jpg</file>
+        <file>material/COM001.png</file>
+        <file>material/displacement (2).png</file>
+        <file>material/displacement.png</file>
+        <file>material/loginImg.png</file>
+        <file>material/电源 (1).png</file>
+        <file>material/电源.png</file>
+        <file>material/滚刷 (2).png</file>
+        <file>material/滚刷.png</file>
+        <file>material/交换反向 (2).png</file>
+        <file>material/交换反向.png</file>
+        <file>material/开关 (1).png</file>
+        <file>material/开关.png</file>
+        <file>material/快下速度 (2).png</file>
+        <file>material/快下速度.png</file>
+        <file>material/连接.png</file>
+        <file>material/前灯 (2).png</file>
+        <file>material/前灯.png</file>
+        <file>material/速度.png</file>
+        <file>material/向上.png</file>
+    </qresource>
+</RCC>
