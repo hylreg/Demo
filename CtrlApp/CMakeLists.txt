@@ -4,12 +4,12 @@ project(CtrlApp VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_PREFIX_PATH "D:/Programs/Qt/6.8.1/msvc2022_64")
+set(CMAKE_PREFIX_PATH "~/Programs/Qt/6.9.0/msvc2022_64")
 
 
-find_package(Qt6 6.8 REQUIRED COMPONENTS Quick SerialPort)
+find_package(Qt6 6.9 REQUIRED COMPONENTS Quick SerialPort)
 
-qt_standard_project_setup(REQUIRES 6.8)
+qt_standard_project_setup(REQUIRES 6.9)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
