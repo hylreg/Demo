@@ -1,9 +1,12 @@
 import cv2
+from triton.runtime import driver
 
 from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 
-model = YOLO("yolo11n.pt")
+# model = YOLO("/home/hyl/Projects/hylreg/Data/YOLO/models/yolo11n.pt")
+model = YOLO("/home/hyl/Projects/hylreg/Data/YOLO/models/yolo11n.onnx")
+
 names = model.names
 
 cap = cv2.VideoCapture(0)
@@ -16,13 +19,30 @@ blur_ratio = 50
 # Video writer
 # video_writer = cv2.VideoWriter("object_blurring_output.avi", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
+prev_time = 0  # 用于计算FPS
+
 while cap.isOpened():
     success, im0 = cap.read()
     if not success:
         print("Video frame is empty or video processing has been successfully completed.")
         break
 
-    results = model.predict(im0, show=False)
+    # 计算FPS
+    current_time = cv2.getTickCount()
+    fps = cv2.getTickFrequency() / (current_time - prev_time) if prev_time != 0 else 0
+    prev_time = current_time
+
+    # 在图像左上角显示FPS（白色文字）
+    cv2.putText(im0, f"FPS: {int(fps)}", (10, 30),
+    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+
+     # 打印帧率
+    print(f"FPS: {int(fps)}")
+
+
+    results = model.predict(im0, show=False,device="0")
+    # results = model.predict(im0, show=False,device="cpu")
+
     boxes = results[0].boxes.xyxy.cpu().tolist()
     clss = results[0].boxes.cls.cpu().tolist()
     annotator = Annotator(im0, line_width=2, example=names)

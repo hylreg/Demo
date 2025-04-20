@@ -1,6 +1,6 @@
 from pathlib import Path
 
-dataset_path = Path("/home/hyl/Desktop/test/")  # replace with 'path/to/dataset' for your custom data
+dataset_path = Path("/home/hyl/Desktop/test/")  # replace with 'path/to/datasets' for your custom data
 labels = sorted(dataset_path.rglob("*labels/*.txt"))  # all data in 'labels'
 
 import yaml
@@ -69,7 +69,7 @@ images = []
 for ext in supported_extensions:
     images.extend(sorted((dataset_path / "images").rglob(f"*{ext}")))
 
-# Create the necessary directories and dataset YAML files (unchanged)
+# Create the necessary directories and datasets YAML files (unchanged)
 save_path = Path(dataset_path / f"{datetime.date.today().isoformat()}_{ksplit}-Fold_Cross-val")
 save_path.mkdir(parents=True, exist_ok=True)
 ds_yamls = []
@@ -83,7 +83,7 @@ for split in folds_df.columns:
     (split_dir / "val" / "images").mkdir(parents=True, exist_ok=True)
     (split_dir / "val" / "labels").mkdir(parents=True, exist_ok=True)
 
-    # Create dataset YAML files
+    # Create datasets YAML files
     dataset_yaml = split_dir / f"{split}_dataset.yaml"
     ds_yamls.append(dataset_yaml)
 

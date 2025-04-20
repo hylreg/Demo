@@ -9,7 +9,7 @@ model = YOLO("yolo11n.pt")
 
 # 训练模型
 train_results = model.train(
-    data="dataset/coco8.yaml",  # 数据集 YAML 路径
+    data="datasets/coco8.yaml",  # 数据集 YAML 路径
     epochs=100,  # 训练轮次
     imgsz=640,  # 训练图像尺寸
     device="0",  # 运行设备，例如 device=0 或 device=0,1,2,3 或 device=cpu
@@ -35,7 +35,7 @@ results[0].show()
 #
 # # Tune hyperparameters on COCO8 for 30 epochs
 # model.tune(
-#     data="dataset/coco8.yaml",
+#     data="datasets/coco8.yaml",
 #     epochs=30,
 #     iterations=300,
 #     optimizer="AdamW",

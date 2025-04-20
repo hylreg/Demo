@@ -3,7 +3,7 @@ import cv2
 from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 
-model = YOLO("yolo11n.pt")
+model = YOLO("/home/hyl/Projects/hylreg/Data/YOLO/models/yolo11n.pt")
 names = model.model.names
 cap = cv2.VideoCapture(0)
 w, h, fps = (int(cap.get(x)) for x in (cv2.CAP_PROP_FRAME_WIDTH, cv2.CAP_PROP_FRAME_HEIGHT, cv2.CAP_PROP_FPS))
